@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link ref="stylesheet" href="/static/css/..."> -->
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <h1>Welcome {{user.f_name}}!</h1>
+            <div>
+                <a class="" >Create</a>
+                <!-- <a class="" >Profile</a> -->
+                <a class="" >Logout</a>
+                <!-- conditional rendering of nav choices? -->
+                <a class="" >Dashboard</a>
+            </div>
+        </nav>
+        <h2>Hot Topics</h2>
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Posted By</th>
+                        <th>Results</th>
+                        <th>Actions</th> <!-- again conditional rendering for logged in user and post's owner-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% for post in posts %} -->
+                    <tr>
+                        <td>{{content}}</td>
+                        <td href="" >{{user_id}}</td>
+                        <td href="" >{{take to display one page for results?}}</td>
+                        <td>
+                            <a href="" >Vote => take to voting page</a>
+                            <a href="" >View => take to display one page</a>
+                            <!-- {% if post.user_id == session.user_id %}  =>  only shows to post's owner -->
+                            <a href="" >Edit => edit form</a>
+                            <a href="" >Delete => delete</a>
+                            <!-- {% endif %} -->
+                        </td>
+                    </tr>
+                    <!-- {% endfor %} -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!-- <script></script> -->
+</body>
+</html>

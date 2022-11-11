@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link ref="stylesheet" href="/static/css/..."> -->
+    <title>Login/Registration</title>
+</head>
+
+<body>
+<!-- This is both forms on one page, but we can do a login and a register page if wanted (for styling) -->
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="registration">
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+                <div>
+                    <label for="f_name">First Name</label>
+                    <input type="text" name="f_name" id="f_name">
+                </div>
+                <div>
+                    <label for="l_name">Last Name</label>
+                    <input type="text" name="l_name" id="l_name">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <label for="confirm_pass">Confirm Password</label>
+                    <input type="password" name="confirm_pass" id="confirm_pass">
+                </div>
+                <button type="submit" class="btn btn-form">Register</button>
+            </form>
+        </div>
+        <div class="login">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <button type="submit" class="btn btn-form">Login</button>
+            </form>
+        </div>
+    </div>
+<!-- <script></script> -->
+</body>
+</html>
