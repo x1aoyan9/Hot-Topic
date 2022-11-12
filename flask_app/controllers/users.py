@@ -1,8 +1,8 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.user import User
-from flask_app.models.topics import Topic
-from flask_app.models.comments import Comment
+from flask_app.models.topic import Topic
+from flask_app.models.comment import Comment
 # another model
 from flask_bcrypt import Bcrypt
 
@@ -27,7 +27,7 @@ def register():
         "email" : request.form['email'],
         "password" : bcrypt.generate_password_hash(request.form['password'])
     }
-    session['user_id'] = User.create(data)
+    session['user_id'] = User.create_user(data)
     return redirect('/dashboard')
 
 
@@ -57,6 +57,7 @@ def logout():
 def dashboard():
     if "user_id" in session:
         return render_template('dashboard.html', user=User.get_by_id({"id" : session['user_id']}), all_topics=Topic.get_topics_with_creator())
+    return redirect('/')
 
 
 # PROFILE PAGE - find user by id => INCOMPLETE ROUTE (populate user's own posts)
