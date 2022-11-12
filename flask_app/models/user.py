@@ -67,7 +67,7 @@ class User:
 
     @staticmethod
     def valid_user(user):
-        id_valid = True
+        is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(User.db).query_db(query, user)
         if len(results) >= 1:
