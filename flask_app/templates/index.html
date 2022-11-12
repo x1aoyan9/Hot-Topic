@@ -10,10 +10,9 @@
     <title>Login/Registration</title>
 </head>
 
-<body>
-<!-- This is both forms on one page, but we can do a login and a register page if wanted (for styling) -->
-
+<body class="bg-dark text-warning text-center">
     <div class="container">
+        <h1 class="fire mb-5 text-danger">Welcome to Hot Topic!</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -21,8 +20,9 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        <div class="d-flex justify-content-around">
         <div class="registration">
-            <h2>Register</h2>
+            <h2 class="red">New? Register Here:</h2>
             <form action="/register" method="POST">
                 <div>
                     <label for="f_name">First Name</label>
@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
+                    <input type="email" name="email" id="email" type="email">
                 </div>
                 <div>
                     <label for="password">Password</label>
@@ -44,24 +44,25 @@
                     <label for="confirm_pass">Confirm Password</label>
                     <input type="password" name="confirm_pass" id="confirm_pass">
                 </div>
-                <button type="submit" class="btn btn-form">Register</button>
+                <button type="submit" class="btn btn-form btn-info">Register</button>
             </form>
         </div>
         <div class="login">
-            <h2>Login</h2>
+            <h2>Welcome Back! Login Here:</h2>
             <form action="/login" method="POST">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
+                    <input type="email" name="email" id="email" type="email">
                 </div>
                 <div>
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <button type="submit" class="btn btn-form">Login</button>
+                <button type="submit" class="btn btn-form btn-info">Login</button>
             </form>
         </div>
     </div>
+</div>
 <!-- <script></script> -->
 </body>
 </html>
