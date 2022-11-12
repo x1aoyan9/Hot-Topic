@@ -5,7 +5,7 @@ from flask import flash
 
 
 class User:
-    db = "DATABASE NAME HERE"
+    db = "hot_topic"
     def __init__(self, data):
         self.id = data['id']
         self.f_name = data['f_name']
