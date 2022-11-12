@@ -34,21 +34,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- {% for post in posts %} -->
-                    <tr>
+                        {% for topic in all_topics %}
+                            <tr>
                         <td>{{content}}</td>
                         <td href="" >{{user_id}}</td>
-                        <td href="" >{{take to display one page for results?}}</td>
+                            <td href="" >{{take to display one page for results?}}</td>
                         <td>
                             <a href="" >Vote => take to voting page</a>
                             <a href="" >View => take to display one page</a>
-                            <!-- {% if post.user_id == session.user_id %}  =>  only shows to post's owner -->
+                                {% if post.user_id == session.user_id %}  =>  only shows to post's owner
                             <a href="" >Edit => edit form</a>
                             <a href="" >Delete => delete</a>
-                            <!-- {% endif %} -->
+                                {% endif %}
                         </td>
                     </tr>
-                    <!-- {% endfor %} -->
+                        {% endfor %}
                 </tbody>
             </table>
         </div>

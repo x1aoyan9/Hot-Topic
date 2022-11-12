@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link ref="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link ref="stylesheet" href="../static/css/style.css">
     <title>Login/Registration</title>
 </head>
 
-<body class="bg-dark text-warning text-center">
+<body class="red_to_yellow bg-dark text-warning text-center">
     <div class="container">
         <h1 class="fire mb-5 text-danger">Welcome to Hot Topic!</h1>
         {% with messages = get_flashed_messages() %}
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <label for="confirm_pass">Confirm Password</label>
-                    <input type="password" name="confirm_pass" id="confirm_pass">
+                    <input type="password" name="confirm_password" id="confirm_password">
                 </div>
                 <button type="submit" class="btn btn-form btn-info">Register</button>
             </form>

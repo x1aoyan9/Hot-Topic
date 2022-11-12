@@ -1,7 +1,7 @@
 from flask import session, flash
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.user import User
-from flask_app.models.topics import Topic
+from flask_app.models.topic import Topic
 
 class Comment:
     db = 'hot_topic'
