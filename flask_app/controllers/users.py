@@ -103,5 +103,7 @@ def create_topic():
 #View the topic in a separate page, INCOMPLETE needs the actual html page made for the actual vote functionality
 @app.route('/view_topic/<int:topic_id>', methods=['get'])
 def view_topic(topic_id):
-    data = {'id': topic_id}
+    data = {
+        'id': topic_id
+        }
     return render_template('INSERT VIEW/VOTE HTML', topic=Topic.get_one_topic(data))
