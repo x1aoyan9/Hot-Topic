@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link ref="stylesheet" href="/static/css/..."> -->
+    <link ref="stylesheet" href="../static/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Login/Registration</title>
 </head>
 
-<body>
-<!-- This is both forms on one page, but we can do a login and a register page if wanted (for styling) -->
-
-    <div class="container">
+<body class="red_to_yellow bg-dark text-warning text-center">
+    <div class="container-fluid">
+        <h1 class="fire mb-5 text-danger">Welcome to Hot Topic!</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -19,47 +20,136 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <div class="registration">
-            <h2>Register</h2>
-            <form action="/register" method="POST">
-                <div>
-                    <label for="f_name">First Name</label>
-                    <input type="text" name="f_name" id="f_name">
+        <div class="d-flex justify-content-center">
+            <div class="col">
+                <div class="registration">
+                    <h2 class="red">New? Register Here:</h2>
+                    <form action="/register" method="POST">
+                        <div>
+                            <label for="f_name">First Name</label>
+                            <input type="text" name="f_name" id="f_name">
+                        </div>
+                        <div>
+                            <label for="l_name">Last Name</label>
+                            <input type="text" name="l_name" id="l_name">
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" type="email">
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <div>
+                            <label for="confirm_pass">Confirm Password</label>
+                            <input type="password" name="confirm_password" id="confirm_password">
+                        </div>
+                        <button type="submit" class="btn btn-form btn-info">Register</button>
+                    </form>
                 </div>
-                <div>
-                    <label for="l_name">Last Name</label>
-                    <input type="text" name="l_name" id="l_name">
+            </div>
+            <div class="col">
+                <div class="login">
+                    <h2>Welcome Back! Login Here:</h2>
+                    <form action="/login" method="POST">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" type="email">
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <button type="submit" class="btn btn-form btn-info">Login</button>
+                    </form>
                 </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <div>
-                    <label for="confirm_pass">Confirm Password</label>
-                    <input type="password" name="confirm_pass" id="confirm_pass">
-                </div>
-                <button type="submit" class="btn btn-form">Register</button>
-            </form>
-        </div>
-        <div class="login">
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email"> <!-- type="email" or type="text" -->
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <button type="submit" class="btn btn-form">Login</button>
-            </form>
+            </div>
         </div>
     </div>
-<!-- <script></script> -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/SHindex.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <title>Login/Registration</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Hot Topic!</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="warning-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row">
+            <div class="column">
+                <div class="registration">
+                    <h2 class="form-title">Register</h2>
+                    <form action="/register" method="POST">
+                        <div>
+                            <label for="f_name">First Name:</label>
+                            <input type="text" name="f_name" id="f_name">
+                        </div>
+                        <div>
+                            <label for="l_name">Last Name:</label>
+                            <input type="text" name="l_name" id="l_name">
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" type="email">
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <div>
+                            <label for="confirm_pass">Confirm Password:</label>
+                            <input type="password" name="confirm_password" id="confirm_password">
+                        </div>
+                        <button type="submit"><img src="../static/img/enter.png"/></button>
+                    </form>
+                </div>
+            </div>
+            <div class="column">
+                <div class="login">
+                    <h2 class="form-title">Login</h2>
+                    <form action="/login" method="POST">
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" type="email">
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <button type="submit" class=""><img src="../static/img/enter.png"/></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p></p>
+        </div>
+    </div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </body>
 </html>

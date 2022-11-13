@@ -1,0 +1,150 @@
+@font-face {
+    font-family: Merriweather-Black;
+    src: url('../fonts/Merriweather-Black.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Black-Italic;
+    src: url('../fonts/Merriweather-BlackItalic.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Bold;
+    src: url('../fonts/Merriweather-Bold.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Bold-Italic;
+    src: url('../fonts/Merriweather-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Italic;
+    src: url('../fonts/Merriweather-Italic.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Light;
+    src: url('../fonts/Merriweather-Light.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Light-Italic;
+    src: url('../fonts/Merriweather-LightItalic.ttf');
+}
+
+@font-face {
+    font-family: Merriweather-Regular;
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    padding: 3%;
+    text-shadow: 2px 2px 5px black;
+    font-family:'Merriweather-Light';
+}
+
+.warning-message {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 5px;
+}
+
+.container {
+    height: 713px;
+    background-size: cover;
+    background-color: rgb(255, 183, 0);
+    background-image: url('../img/richard-horvath-unsplash.jpg');
+    color: white;
+    overflow: hidden;
+}
+
+.registration, .login {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px 20px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.4), 6px 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.form-title {
+    padding-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(255, 0, 0, 0.8);
+    font-family: 'Merriweather-Light';
+}
+
+form > input[type="text"], input[type="password"], input[type="email"], #f_name, #l_name {
+    width: 100%;
+    border-radius: 15px;
+    margin: 10px 5px;
+    padding: 2px;
+}
+
+form > button {
+    border: none;
+    border-radius: 50px;
+    position: fixed;
+    margin-left: -15px;
+    background-color: transparent;
+    cursor: pointer;
+    align-self: center;
+    opacity: 1;
+    transition: 0.3s;
+    overflow: hidden;
+    height: 31px;
+}
+
+button:hover {
+    box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(248, 146, 238, 0.4),
+        transparent
+    );
+    transition: all 650ms;
+}
+
+button:hover:before {
+    left: 100%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 6%;
+    width: 100%;
+    background-color: black;
+    color: white;
+}

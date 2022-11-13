@@ -1,39 +1,136 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link ref="stylesheet" href="/static/css/..."> -->
+    <link ref="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Edit</title>
 </head>
-<body>
+<body class="bg-dark text-warning">
     <div class="container">
-        {% if messages %}
-            {% for message in messages %}
-                <p class="text-danger">{{message}}</p>
-            {% endfor %}
-        {% endif %}
-        <nav>
-            <h1>{{ user.f_name }}</h1>
+        <nav class="d-flex justify-content-between align-items-center">
+            <h1>Hello {{ user.f_name }}...Let's Make a Hot Topic!!</h1>
             <div>
-                <a href="/dashboard" >Dashboard</a>
-                <a href="" >Profile</a>
-                <a href="/logout" >Logout</a>
-                <a href="" >Create</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/user/{{user.id}}">Profile</a>
+                <a href="/logout">Logout</a>
             </div>
         </nav>
         <div>
-            <form action="" method="POST">
-                <h2>Edit</h2>
+            <form action="/view_topic/{{topic.id}}/edit" method="POST">
+                <h2>Create a New Topic</h2> 
+                {% if messages %}
+                {% for message in messages %}
+                <p class="text-danger">{{message}}</p>
+                {% endfor %}
+                {% endif %}
                 <div>
-                    <label></label>
-                    <input >
+                    <label for="title" class="form-label">Title*</label>
+                    <input class="form-control" type="text" name="title" value="{{topic.title}}">
+                </div>
+                <div>
+                    <label for="question" class="form-label">What is your question?*</label>
+                    <input class="form-control" type="text" name="question" value="{{topic.question}}">
+                </div>
+                <div>
+                    <label for="choice1" class="form-label">Choice 1:*</label>
+                    <input class="form-control" type="text" name="choice1" value="{{topic.choice1}}">
+                </div>
+                <div>
+                    <label for="choice2" class="form-label">Choice 2:*</label>
+                    <input class="form-control" type="text" name="choice2" value="{{topic.choice2}}">
+                </div>
+                <div>
+                    <label for="choice3" class="form-label">Choice 3:</label>
+                    <input class="form-control" type="text" name="choice3" value="{{topic.choice3}}">
+                </div>
+                <div>
+                    <label for="choice4" class="form-label">Choice 4:</label>
+                    <input class="form-control" type="text" name="choice4" value="{{topic.choice4}}">
+                </div>
+                <div>
+                    <label for="choice5" class="form-label">Choice 5:</label>
+                    <input class="form-control" type="text" name="choice5" value="{{topic.choice5}}">
+                </div>
+                <p>*: input required</p>
+                <button>Create Topic</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link ref="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../static/css/SHform.css">
+    <title>Edit</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Hot Topics</h1>
+            <nav>
+                <ul>
+                    <li><a href="/logout"><img  class="logout-button" src="../static/img/logout.png"></a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/user/{{user.id}}">Profile</a></li>
+                </ul>
+            </nav>
+            <form action="/view_topic/{{topic.id}}/edit" method="POST">
+                <h2>Edit Your Topic</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="warning-message">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <p>* : input required</p>
+                <div class="form-control">
+                    <label for="title" class="form-label">Title *</label>
+                    <input class="form-control" type="text" name="title" value="{{topic.title}}">
+                </div>
+                <div class="form-control">
+                    <label for="question" class="form-label">What is your question? *</label>
+                    <input class="form-control" type="text" name="question" value="{{topic.question}}">
+                </div>
+                <div class="form-control">
+                    <label for="choice1" class="form-label">Choice 1: *</label>
+                    <input class="form-control" type="text" name="choice1" value="{{topic.choice1}}">
+                </div>
+                <div class="form-control">
+                    <label for="choice2" class="form-label">Choice 2: *</label>
+                    <input class="form-control" type="text" name="choice2" value="{{topic.choice2}}">
+                </div>
+                <div class="form-control">
+                    <label for="choice3" class="form-label">Choice 3:</label>
+                    <input class="form-control" type="text" name="choice3" value="{{topic.choice3}}">
+                </div>
+                <div class="form-control">
+                    <label for="choice4" class="form-label">Choice 4:</label>
+                    <input class="form-control" type="text" name="choice4" value="{{topic.choice4}}">
+                </div>
+                <div class="form-control">
+                    <label for="choice5" class="form-label">Choice 5:</label>
+                    <input class="form-control" type="text" name="choice5" value="{{topic.choice5}}">
                 </div>
                 <button>Update</button>
             </form>
         </div>
     </div>
-<!-- <script></script> -->
+    <div class="footer">
+        <p></p>
+    </div>
 </body>
 </html>

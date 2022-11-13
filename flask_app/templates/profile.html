@@ -8,47 +8,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link ref="stylesheet" href="../static/css/style.css">
-    <title>Dashboard</title>
+    <title>Profile</title>
 </head>
 
 <body class="bg-dark text-warning">
     <div class="container">
         <nav class="nav-bar d-flex justify-content-between align-items-center">
-            <h1>Welcome {{user.f_name}}!</h1>
+            <h1>Profile</h1>
             <div>
+                <a href="/dashboard" class="mr-2">Dashboard</a>
                 <a href="/create" class="mr-2">Create Topic</a>
-                <a href="/user/{{user.id}}" class="mr-2">Profile</a>
                 <a href="/logout">Logout</a>
             </div>
         </nav>
-        <h2>Hot Topics</h2>
-        {% with attempt_vote = get_flashed_messages(category_filter = ['attempt_vote']) %}
-            {% if attempt_vote %}
-                {% for msg in attempt_vote %}
-                    <p class="text-danger"><strong>Error:</strong></p>
-                    <p class="text-danger">{{msg}}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        <h2>Name: {{user.f_name}} {{user.l_name}}</h2>
+        <h2>Email: {{user.email}}</h2>
+        <h2>{{user.f_name}}'s topics:</h2>
         <div class="content">
             <table class="table table-bordered table-danger">
                 <thead>
                     <tr>
                         <th>Topic</th>
-                        <th>Posted By</th>
                         <th>Results</th>
-                        <th>Actions</th> conditional rendering for logged in user and post's owner
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for topic in all_topics %}
+                    {% for topic in topics %}
                     <tr>
                         <td>{{topic.title}}</td>
-                        <td>{{topic.creator.f_name}} {{topic.creator.l_name}}</td>
                         <td><a href="/results/{{topic.id}}">View Results</a></td>
                         <td>
-                            <a href="/view_topic/{{topic.id}}" class="mr-2">Vote</a>
-                            {% if topic.creator.id == session['user_id'] %}
+                            <a href="/view_topic/{{topic.id}}" class="mr-2">View</a>
+                            {% if topic.user_id == session.user_id %}
                             <a href="/view_topic/{{topic.id}}/edit" class="mr-2">Edit</a>
                             <a href="/view_topic/{{topic.id}}/delete">Delete</a>
                             {% endif %}
@@ -59,7 +51,7 @@
             </table>
         </div>
     </div>
-    <script></script>
+
 </body>
 
 </html> -->
@@ -72,52 +64,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <!-- <link ref="stylesheet" href="../static/css/style.css"> -->
-    <link rel="stylesheet" href="../static/css/SHdashboard.css">
-    <title>Dashboard</title>
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link ref="stylesheet" href="../static/css/style.css"> -->
+    <link rel="stylesheet" href="../static/css/SHprofile.css">
+    <title>Profile</title>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <h1>Hot Topics</h1>
             <nav>
+                <h1>Hot Topics</h1>
                 <ul>
                     <li><a href="/logout"><img  class="logout-button" src="../static/img/logout.png"></a></li>
                     <li><a href="/create">Create Topic</a></li>
-                    <li><a href="/user/{{user.id}}">Profile</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                 </ul>
             </nav>
-            <h2>Welcome {{user.f_name}}!</h2>
-            {% with attempt_vote = get_flashed_messages(category_filter = ['attempt_vote']) %}
-                {% if attempt_vote %}
-                    {% for msg in attempt_vote %}
-                        <p class="warning-message"><strong>Error:</strong></p>
-                        <p class="warning-message">{{msg}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            <div class="profile-header">
+                <div class="avatar-holder">
+                    <img src="https://via.placeholder.com/200">
+                </div>
+                <div class="avatar-info">
+                    <h3>{{user.f_name}} {{user.l_name}}</h3>
+                    <h4>{{user.email}}</h4>
+                </div>
+            </div>
             <div class="content">
-                <table>
+                <table class="table table-bordered table-danger">
                     <thead>
                         <tr>
-                            <th>Topic</th>
-                            <th>Posted By</th>
+                            <th>{{user.f_name}}'s Topics</th>
                             <th>Results</th>
-                            <th>Actions</th> <!-- conditional rendering for logged in user and post's owner-->
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for topic in all_topics %}
+                        {% for topic in topics %}
                         <tr class="table-info">
                             <td>{{topic.title}}</td>
-                            <td>{{topic.creator.f_name}} {{topic.creator.l_name}}</td>
                             <td><a href="/results/{{topic.id}}">View Results</a></td>
                             <td class="action-links">
-                                <a href="/view_topic/{{topic.id}}" class="">Vote</a>
-                                {% if topic.creator.id == session['user_id'] %}
-                                <a href="/view_topic/{{topic.id}}/edit" class="">Edit</a>
+                                {% if topic.user_id == session.user_id %}
+                                <a href="/view_topic/{{topic.id}}/edit">Edit</a>
                                 <a href="/view_topic/{{topic.id}}/delete">Delete</a>
                                 {% endif %}
                             </td>
@@ -131,6 +120,5 @@
             <p></p>
         </div>
     </div>
-    <!-- <script></script> -->
 </body>
 </html>

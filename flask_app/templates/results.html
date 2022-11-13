@@ -1,0 +1,117 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link ref="stylesheet" href="../static/css/style.css">
+    <title>Dashboard</title>
+</head>
+<body class="bg-dark text-warning">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Viewing results for {{topic.title}}</h1>
+        <div>
+            <a href="/dashboard" class="mr-2">Dashboard</a>
+            <a href="/user/{{user.id}}" class="mr-2">Profile</a>
+            <a href="/logout" class="mr-2">Logout</a>
+        </div>
+
+    </div>
+    <p>Total responses: {{all_responses|length}}</p>
+    <p>{{topic.choice1}}: {{choice1_total|length}}</p>
+    <p>{{topic.choice2}}: {{choice2_total|length}}</p>
+    {% if topic.choice3 %}
+    <p>{{topic.choice3}}: {{choice3_total|length}}</p>
+    {% endif %}
+    {% if topic.choice4 %}
+    <p>{{topic.choice4}}: {{choice4_total|length}}</p>
+    {% endif %}
+    {% if topic.choice5 %}
+    <p>{{topic.choice5}}: {{choice5_total|length}}</p>
+    {% endif %}
+
+    <form action="/results/{{topic.id}}/comment" method="POST">
+        <label class="form-label" for="comment">Write a comment:</label>
+        <textarea class="form-control" name="comment" id="comment" cols="5" rows="5"></textarea>
+        <button>Post comment</button>
+    </form>
+
+    {% if all_comments %}
+    <hr>
+    <h3>Comments:</h3>
+    <hr>
+    {% for comment in all_comments %}
+        <p>{{all_users[comment.user_id-1].f_name}} {{all_users[comment.user_id-1].l_name}} commented: {{comment.comment}}</p>
+        <hr>
+    {% endfor %}
+    {% endif %}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link ref="stylesheet" href="../static/css/style.css"> -->
+    <link rel="stylesheet" href="../static/css/SHresult.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>{{topic.title}}</h1>
+            <nav>
+                <ul>
+                    <li><a href="/logout"><img class="logout-button" src="../static/img/logout.png"></a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/user/{{user.id}}">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="result-bin">
+                <p>Total responses: {{all_responses|length}}</p>
+                <h2>Results:</h2>
+                <h3>{{topic.choice1}}: {{choice1_total|length}}</h3>
+                <h3>{{topic.choice2}}: {{choice2_total|length}}</h3>
+                {% if topic.choice3 %}
+                    <h3>{{topic.choice3}}: {{choice3_total|length}}</h3>
+                {% endif %}
+                {% if topic.choice4 %}
+                    <h3>{{topic.choice4}}: {{choice4_total|length}}</h3>
+                {% endif %}
+                {% if topic.choice5 %}
+                    <h3>{{topic.choice5}}: {{choice5_total|length}}</h3>
+                {% endif %}
+            </div>
+            <div class="comment-thread">
+                <div class="comment-form">
+                    <form action="/results/{{topic.id}}/comment" method="POST">
+                        <label class="form-label" for="comment">Write a comment:</label>
+                        <textarea class="form-control" name="comment" id="comment" cols="5" rows="5"></textarea>
+                        <button>Send?<img src="../static/img/export(4).png"></button>
+                    </form>
+                </div>
+                <div class="comments-posted">
+                    {% if all_comments %}
+                    <h4>Comments:</h4>
+                        {% for comment in all_comments %}
+                            <div class="comment-info">
+                                <p class="comment-author">{{all_users[comment.user_id-1].f_name}} {{all_users[comment.user_id-1].l_name}}</p>
+                                <p class="comment-body">{{comment.comment}}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>

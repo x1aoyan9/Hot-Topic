@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link ref="stylesheet" href="../static/css/style.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>{{topic.title}}</h1>
+    <h3>{{topic.question}}</h3>
+    <form action="/view_topic/submit_choice/{{topic.id}}" method="post">
+        <h3>Select your choice!</h3>
+        <div>
+            <input type="radio" name="choice" id="choice1" value="{{topic.choice1}}">
+            <label for="choice1">{{topic.choice1}}</label>
+        </div>
+        <div>
+            <input type="radio" name="choice" id="choice2" value="{{topic.choice2}}">
+            <label for="choice2">{{topic.choice2}}</label>
+        </div>
+        {% if topic.choice3  %}
+        <div>
+            <input type="radio" name="choice" id="choice3" value="{{topic.choice3}}">
+            <label for="choice3">{{topic.choice3}}</label>
+        </div>
+        {% endif %}
+        {% if topic.choice4  %}
+        <div>
+            <input type="radio" name="choice" id="choice4" value="{{topic.choice4}}">
+            <label for="choice4">{{topic.choice4}}</label>
+        </div>
+        {% endif %}
+        {% if topic.choice5  %}
+        <div>
+            <input type="radio" name="choice" id="choice5" value="{{topic.choice5}}">
+            <label for="choice5">{{topic.choice5}}</label>
+        </div>
+        {% endif %}
+        <input type="submit" value="Cast your vote!">
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link ref="stylesheet" href="../static/css/style.css"> -->
+    <link rel="stylesheet" href="../static/css/SHform.css">
+    <title>Voting</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Hot Topics</h1>
+            <nav>
+                <ul>
+                    <li><a href="/logout"><img class="logout-button" src="../static/img/logout.png"></a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                </ul>
+            </nav>
+            <h2>{{topic.question}}</h2>
+            <form action="/view_topic/submit_choice/{{topic.id}}" method="post">
+                <h3>Select your choice!</h3>
+                <div class="form-control">
+                    <input type="radio" name="choice" id="choice1" value="{{topic.choice1}}">
+                    <label for="choice1">{{topic.choice1}}</label>
+                </div>
+                <div class="form-control">
+                    <input type="radio" name="choice" id="choice2" value="{{topic.choice2}}">
+                    <label for="choice2">{{topic.choice2}}</label>
+                </div>
+                {% if topic.choice3  %}
+                    <div class="form-control">
+                        <input type="radio" name="choice" id="choice3" value="{{topic.choice3}}">
+                        <label for="choice3">{{topic.choice3}}</label>
+                    </div>
+                {% endif %}
+                {% if topic.choice4  %}
+                    <div class="form-control">
+                        <input type="radio" name="choice" id="choice4" value="{{topic.choice4}}">
+                        <label for="choice4">{{topic.choice4}}</label>
+                    </div>
+                {% endif %}
+                {% if topic.choice5  %}
+                    <div class="form-control">
+                        <input type="radio" name="choice" id="choice5" value="{{topic.choice5}}">
+                        <label for="choice5">{{topic.choice5}}</label>
+                    </div>
+                {% endif %}
+                <input type="submit" value="Cast your vote!">
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p></p>
+    </div>
+</body>
+</html>

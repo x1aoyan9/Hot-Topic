@@ -5,7 +5,7 @@ from flask import flash
 
 
 class User:
-    db = "DATABASE NAME HERE"
+    db = "hot_topic"
     def __init__(self, data):
         self.id = data['id']
         self.f_name = data['f_name']
@@ -52,6 +52,13 @@ class User:
         results = connectToMySQL(cls.db).query_db(query, data)
         return cls(results[0])
 
+#UPDATE BY ID
+    # @classmethod
+    # def update_by_id(cls, data):
+    #     query = query = "UPDATE users SET f_name = %(f_name)s, l_name = %(l_name)s, email = %(email)s, password = %(password)s WHERE id = %(id)s"
+    #     return connectToMySQL(cls.db).query_db(query, data)
+
+
 
 # @classmethod
 # def get_user_posts(cls, data):
@@ -67,7 +74,7 @@ class User:
 
     @staticmethod
     def valid_user(user):
-        id_valid = True
+        is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(User.db).query_db(query, user)
         if len(results) >= 1:
